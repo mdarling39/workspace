@@ -1,4 +1,4 @@
 workspace
 =========
 
-C++ code for BeagleBone
+OpenCV C++ code for BeagleBone
