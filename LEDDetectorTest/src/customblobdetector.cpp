@@ -273,6 +273,9 @@ void CustomBlobDetector::findBlobs(const cv::Mat &image, const cv::Mat &binaryIm
 			targetErrorDenom += params.w_BlobColor;
 		}
 
+		contourStruct.imageX = center.location.x;
+		contourStruct.imageY = center.location.y;
+
 		//compute blob radius
 		{
 			vector<double> dists;
@@ -362,7 +365,9 @@ void CustomBlobDetector::detectImpl(const cv::Mat& image, std::vector<cv::KeyPoi
 	//fprintf(pFile,"%15s%15s%15s%15s%15s%15s\n","Errors:","TotalError","circularity","inertiaRatio","convexity","blobColor");
 
 	if (curContourStructs.size() == 0) {
-		fprintf(pFile,"%15s%15s%15s%15s%15s%15s%15s\n",
+		fprintf(pFile,"%15s%15s%15s%15s%15s%15s%15s%15s%15s\n",
+				"NaN",
+				"NaN",
 				"NaN",
 				"NaN",
 				"NaN",
@@ -375,14 +380,16 @@ void CustomBlobDetector::detectImpl(const cv::Mat& image, std::vector<cv::KeyPoi
 		{
 			if (!params.filterByError || curContourStructs[i].targetError < params.maxError) {
 				//std::cout << "  " << curContourStructs[i].targetError;
-				fprintf(pFile,"%15d%15.4f%15.4f%15.4f%15.4f%15.4f%15.4f\n",
+				fprintf(pFile,"%15d%15.4f%15.4f%15.4f%15.4f%15.4f%15.4f%15.4f%15.4f\n",
 						i,
 						curContourStructs[i].targetError,
 						curContourStructs[i].circularity,
 						curContourStructs[i].inertiaRatio,
 						curContourStructs[i].convexity,
 						curContourStructs[i].blobColor,
-						curContourStructs[i].area);
+						curContourStructs[i].area,
+						curContourStructs[i].imageX,
+						curContourStructs[i].imageY);
 				KeyPoint kpt((Point2d)curContourStructs[i].center.location, (float)(curContourStructs[i].center.radius));
 				keypoints.push_back(kpt);
 			}

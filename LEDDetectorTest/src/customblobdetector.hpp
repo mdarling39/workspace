@@ -84,7 +84,8 @@ protected:
 	struct CV_EXPORTS contourStructObj {
 		Center center;
 		double targetError, area, circularity,
-		inertiaRatio, convexity, blobColor;
+		inertiaRatio, convexity, blobColor,
+		imageX, imageY;
 		contourStructObj(Center a, double b) {
 			center = a;
 			targetError = b;
@@ -93,6 +94,8 @@ protected:
 			inertiaRatio = 0;
 			convexity = 0;
 			blobColor = 0;
+			imageX = 0;
+			imageY = 0;
 		}
 		const bool operator < (const contourStructObj &a) const {
 			return (targetError < a.targetError);

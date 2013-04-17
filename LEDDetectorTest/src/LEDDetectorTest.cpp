@@ -45,15 +45,15 @@ int main() {
 	//blobParams.maxThreshold = 256;
 	//blobParams.thresholdStep = blobParams.maxThreshold - blobParams.minThreshold - 1;
 	//blobParams.minDistBetweenBlobs = 8;
-	blobParams.minArea = 4;
+	blobParams.minArea = 2;
 	blobParams.maxArea = 75;
-	blobParams.minCircularity = 0.4;
+	blobParams.minCircularity = 0.3;
 	blobParams.maxCircularity = 1.1;
 	blobParams.targetCircularity = 1.0;
-	blobParams.minInertiaRatio = 0.20;
+	blobParams.minInertiaRatio = 0.25;
 	blobParams.maxInertiaRatio = 1.1;
 	blobParams.targetInertiaRatio = 1.0;
-	blobParams.minConvexity = 0.6;
+	blobParams.minConvexity = 0.4;
 	blobParams.maxConvexity = 1.1;
 	blobParams.targetConvexity = 1.0;
 	blobParams.targetBlobColor = 255;  // I think this is red color (or is it "bright" pixels?)
@@ -94,7 +94,7 @@ int main() {
 	KF.processNoiseCov = cv::Mat::eye(kFilter.n_states,kFilter.n_states,kFilter.type)*(1e-2);
 
 	// initialize covariance of measurement noise (R)
-	KF.measurementNoiseCov = cv::Mat::eye(kFilter.n_measurement,kFilter.n_measurement,kFilter.type)*(1e-6);
+	KF.measurementNoiseCov = cv::Mat::eye(kFilter.n_measurement,kFilter.n_measurement,kFilter.type)*(1e-2);
 
 	// initialize posterior error covariance to identity
 	KF.errorCovPost = cv::Mat::eye(kFilter.n_states,kFilter.n_states,kFilter.type);
@@ -138,7 +138,8 @@ int main() {
 	fprintf(pFile,"%15s%15s%15.3f%15.3f%15.3f%15d%15s\n","","",blobParams.targetCircularity,blobParams.targetInertiaRatio,
 			blobParams.targetConvexity,blobParams.targetBlobColor,"--");
 
-	fprintf(pFile,"\n%15s%15s%15s%15s%15s%15s%15s\n","blobNo","TotalError","circularity","inertiaRatio","convexity","blobColor","area");
+	fprintf(pFile,"\n%15s%15s%15s%15s%15s%15s%15s%15s%15s\n","blobNo","TotalError","circularity","inertiaRatio",
+			"convexity","blobColor","area","imageXpt","imageYpt");
 	fclose(pFile);
 #endif  //FOUNDBLOBS_TO_FILE
 
