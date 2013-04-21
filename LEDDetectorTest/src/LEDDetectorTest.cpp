@@ -15,6 +15,7 @@
 #include "FPSCounter.h"
 
 #define FOUNDBLOBS_TO_FILE
+//#define DO_KALMAN_FILTER
 
 
 FILE *pFile;
@@ -40,20 +41,20 @@ int main() {
 	CustomBlobDetector::Params blobParams;
 	//blobParams.minRepeatability = 1;
 	blobParams.maxError = 0.30;
-	blobParams.maxPoints = 5;
+	blobParams.maxPoints = 8;
 	blobParams.minThreshold = 250;
 	//blobParams.maxThreshold = 256;
 	//blobParams.thresholdStep = blobParams.maxThreshold - blobParams.minThreshold - 1;
 	//blobParams.minDistBetweenBlobs = 8;
-	blobParams.minArea = 2;
-	blobParams.maxArea = 75;
-	blobParams.minCircularity = 0.3;
+	blobParams.minArea = 1;
+	blobParams.maxArea = 200;
+	blobParams.minCircularity = 0.0;
 	blobParams.maxCircularity = 1.1;
 	blobParams.targetCircularity = 1.0;
-	blobParams.minInertiaRatio = 0.25;
+	blobParams.minInertiaRatio = 0.0;
 	blobParams.maxInertiaRatio = 1.1;
 	blobParams.targetInertiaRatio = 1.0;
-	blobParams.minConvexity = 0.4;
+	blobParams.minConvexity = 0.0;
 	blobParams.maxConvexity = 1.1;
 	blobParams.targetConvexity = 1.0;
 	blobParams.targetBlobColor = 255;  // I think this is red color (or is it "bright" pixels?)
@@ -76,7 +77,7 @@ int main() {
 	myThreshObj.set_params(blobParams);
 
 
-
+#ifdef DO_KALMAN_FILTER
 	// Initialize Kalman Filter
 	kFilterSt kFilter;  // create a structure to hold some properties
 	kFilter.n_states = 4;
@@ -91,7 +92,7 @@ int main() {
 	KF.measurementMatrix = (cv::Mat_<float>(kFilter.n_measurement,kFilter.n_states) <<  1, 0, 0, 0, 0, 1, 0, 0);
 
 	// initialize covariance of process noise (Q)
-	KF.processNoiseCov = cv::Mat::eye(kFilter.n_states,kFilter.n_states,kFilter.type)*(1e-2);
+	KF.processNoiseCov = cv::Mat::eye(kFilter.n_states,kFilter.n_states,kFilter.type)*(1e-3);
 
 	// initialize covariance of measurement noise (R)
 	KF.measurementNoiseCov = cv::Mat::eye(kFilter.n_measurement,kFilter.n_measurement,kFilter.type)*(1e-2);
@@ -113,6 +114,7 @@ int main() {
 	std::cout << "errorCovPre (P') \n" << KF.errorCovPre << std::endl;
 	std::cout << "gain (K) \n" << KF.gain << std::endl;
 	std::cout << "errorCovPost (P) \n" << KF.errorCovPost << std::endl;
+#endif //DO_KALMAN_FILTER
 
 	// initialize the fps clock (15 frame moving average by default)
 	FPSCounter FPSclk(15);
@@ -143,6 +145,8 @@ int main() {
 	fclose(pFile);
 #endif  //FOUNDBLOBS_TO_FILE
 
+
+// MAIN LOOP
 	for (; ;) {
 
 		// capture a frame from camera
@@ -172,6 +176,10 @@ int main() {
 		// compute and display the fps MAVG
 		std::cout << FPSclk.fps() << std::endl;
 
+
+
+
+#ifdef DO_KALMAN_FILTER
 		//*
 		// compute the KF state transition matrix (need dt first)
 		double dt = double(FPSclk.elapsedTime)/1000;  //get the timestep for KF transition matrix
@@ -205,10 +213,15 @@ int main() {
 		// convert estimated state to point2f for plotting
 		kFilter.estimate.x = KF.statePost.at<float>(0,0);
 		kFilter.estimate.y = KF.statePost.at<float>(1,0);
+		kFilter.estimate.x = KF.statePre.at<float>(0,0);
+		kFilter.estimate.y = KF.statePre.at<float>(1,0);
 
 		std::cout << "Before Prediction:\n" << KF.statePre << KF.statePost << std::endl;
 		std::cout << "After Prediction:\n" << KF.statePre << KF.statePost << std::endl;
 		//*/
+
+
+#endif //DO_KALMAN_FILTER
 
 
 		// print blobs on image
@@ -217,7 +230,10 @@ int main() {
 		channels[2] = R;
 		cv::merge(channels,frame);
 		myThreshObj.createBlobsImage(frame,cv::Scalar(0,0,255.0));
+		if (imagePoints.size() > 0) cv::circle(frame,imagePoints[0], 5 ,cv::Scalar(0,255,0), 3);
+#ifdef DO_KALMAN_FILTER
 		cv::circle(frame, kFilter.estimate, 5, cv::Scalar(255.0,0,0), 3);
+#endif //DO_KALMAN_FILTER
 		cv::namedWindow("Blobs");
 		cv::imshow("Blobs",frame);
 
