@@ -1,0 +1,179 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf370
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 BeagleBone:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Connect to serial console
+\b0 \
+Open termial\
+Type 
+\i screen `ls /dev/\{tty.usb*B,beaglebone-serial\}` 115200\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 Hit "Return"\
+Username is "root"\
+Password (if prompted) is empty, hit "Return"\
+Verify the command prompt is: "root@beaglebone:~#" \
+(To exit screen and end the process, type "Ctrl+a+k".  Confirm by typing 'y')\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Eject the BB to switch from "storage mode" to "network mode"\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Eject the disk from a finder window (to avoid warning messages possibly)\
+Enter the following commands:\
+	
+\i systemctl 
+\b stop
+\b0  storage-gadget-init.service\
+	systemctl 
+\b start
+\b0  network-gadget-init.service
+\i0\b \
+\
+Sharing Host Computer Internet Connection\
+
+\b0 	Probably set 
+\i systemctl 
+\b start
+\b0  network-gadget-init.service\
+	
+\i0 Open Network in SystemPreferences\
+	Go to RNDIS/...Gadget tab  (make sure turns green)\
+	Go back to System Preferences menu and then choose "Sharing"\
+	Click "Internet Sharing", then check "To Computers using: RNDIS/Ethernet Gadget"\
+	Check "Internet Sharing" and select "Start"\
+	"screen" into BB\
+	
+\i udhcpc -i usb0
+\i0 \
+	
+\i ping www.google.com
+\i0\b \
+\
+Use Cloud9 IDE\
+
+\b0 	
+\i systemctl 
+\b start
+\b0  network-gadget-init.service	
+\i0 (if RNDIS is not on in network settings)\
+	type "{\field{\*\fldinst{HYPERLINK "http://192.168.7.2:3000/"}}{\fldrslt http://192.168.7.2:3000/}}" into browser\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Writing and Compiling Programs\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Writing and compiling on BB:\ulnone \
+	(Can do this the same as in Mac Terminal, just use nano text editor and g++ compiler)\
+	g++ -Wall main.cpp function1.cpp function2.cpp -o main -I/usr/include -L/usr/lib \
+	-lopencv_core -lopencv_highgui -lopencv_imgproc\
+\
+	Compile with this other guy's code:\
+	g++ -Wall test2.cpp OCVCapture.cpp -o out.o -I/usr/include -L/usr/lib -lopencv_core -	lopencv_highgui -lopencv_imgproc -lv4l2\
+\
+\ul Copying files to BB:\
+	\ulnone scp <filepath_to_host_file> root@192.168.7.2:<filepath_for_destination>\
+		** Make sure to include the filename in the filepath_for_destination to avoid\
+		overwriting the directory on the target device.\
+		press "enter" for empty password\
+		"root" means the root user of the destination device\
+		the numbers 192.168.7.2 can be found by typing 
+\i ifconfig
+\i0  in the BB terminal screen\
+		(this is the internet address for the usb serial port).\
+		
+\b can use -r flag to copy files recursively
+\b0 \
+\
+\ul Copying files from BB to computer\
+\ulnone 	scp root@192.168.7.2:<path_on_BB> <destination_path_on_computer>\
+	
+\b can use -r flag to copy files recursively\
+\
+	
+\b0 Can also use FileZilla
+\b 	
+\b0 	\
+\
+
+\b Run Program Automatically After Boot\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://stackoverflow.com/questions/14149477/auto-start-program-at-login-in-angstrom-on-beagleboard"}}{\fldrslt 
+\b0 \cf0 http://stackoverflow.com/questions/14149477/auto-start-program-at-login-in-angstrom-on-beagleboard}}
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://www.nunoalves.com/open_source/?p=308"}}{\fldrslt \cf0 http://www.nunoalves.com/open_source/?p=308}}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://groups.google.com/forum/?fromgroups=#!topic/beagleboard/hz27TmCZjZc"}}{\fldrslt \cf0 https://groups.google.com/forum/?fromgroups=#!topic/beagleboard/hz27TmCZjZc}}\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Update Angstrom OS\
+
+\b0 Download the most recent revision from {\field{\*\fldinst{HYPERLINK "http://circuitco.com/support/index.php?title=BeagleBone"}}{\fldrslt http://circuitco.com/support/index.php?title=BeagleBone}}\
+Unzip (may need to use 
+\i xz
+\i0  unzip utility from terminal)\
+
+\i xz -d /Users/michaeldarling/Downloads/Angstrom-Cloud9-IDE-GNOME-eglibc-ipk-v2012-1.05-beaglebone-2012.11.22.img.xz
+\i0 \
+Connect flash drive to computer via card reader\
+use 
+\i diskutil list
+\i0  to determine which device is the BB\
+
+\i diskutil unmountDisk /dev/diskN 
+\i0 , where N is the disk number\
+
+\i sudo dd if=<disk image filepath> of=/dev/diskN
+\i0  
+\i bs=1m
+\i0  , disk image file path is path on computer\
+Eject flash drive, install on BB and boot up as usual.\
+\
+To backup SD card, do something like:\
+
+\i diskutil list
+\i0 \
+
+\i duskutil unmountDisk /dev/disk1
+\i0 \
+
+\i sudo dd if=/dev/disk1 bs=8m | gzip -c > backup.img.gz
+\i0 \
+\
+Then to restore, do something like:\
+
+\i zcat beaglebone_default.img.gz | sudo dd of=/dev/sdb bs=8m
+\i0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul Useful BB Terminal Commansd
+\b0 \ulnone \
+Get current distro version:	
+\i lsb_release -a
+\i0 \
+Get network settings:	
+\i ipconfig\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 Soft shutdown:		
+\i shutdown -h now
+\i0        (-h flag means "halt" after shutdown)\
+Logout:			
+\i logout
+\i0 \
+}

@@ -15,13 +15,23 @@
 #include "FPSCounter.h"
 
 #define FOUNDBLOBS_TO_FILE
+#define SAVEOFF_FRAMES
 //#define DO_KALMAN_FILTER
 
 
+#ifdef FOUNDBLOBS_TO_FILE
 FILE *pFile;
+#endif // FOUNDBLOBS_TO_FILE
+
+#ifdef SAVEOFF_FRAMES
+#include <sys/types.h>
+#include <sys/stat.h>
+unsigned int frameCount = 0;
+#endif // SAVEOFF_FRAMES
 
 
 int main() {
+
 
 	// initialize camera and capture some frames
 	cv::Mat frame;
@@ -39,25 +49,35 @@ int main() {
 
 	// set blob parameters
 	CustomBlobDetector::Params blobParams;
+
+	// NO LONGER INCLUDED IN BLOBPARAMS
 	//blobParams.minRepeatability = 1;
-	blobParams.maxError = 0.30;
-	blobParams.maxPoints = 8;
-	blobParams.minThreshold = 250;
 	//blobParams.maxThreshold = 256;
 	//blobParams.thresholdStep = blobParams.maxThreshold - blobParams.minThreshold - 1;
 	//blobParams.minDistBetweenBlobs = 8;
+
+	blobParams.maxPoints = 10;
+	blobParams.maxError = 0.30;
 	blobParams.minArea = 1;
 	blobParams.maxArea = 200;
-	blobParams.minCircularity = 0.0;
+	blobParams.minCircularity = 0.05;
 	blobParams.maxCircularity = 1.1;
-	blobParams.targetCircularity = 1.0;
-	blobParams.minInertiaRatio = 0.0;
+	blobParams.minInertiaRatio = 0.05;
 	blobParams.maxInertiaRatio = 1.1;
-	blobParams.targetInertiaRatio = 1.0;
-	blobParams.minConvexity = 0.0;
+	blobParams.minConvexity = 0.05;
 	blobParams.maxConvexity = 1.1;
+	blobParams.minThreshold = 250;
+
+
+	blobParams.targetCircularity = 1.0;
+	blobParams.targetInertiaRatio = 1.0;
 	blobParams.targetConvexity = 1.0;
-	blobParams.targetBlobColor = 255;  // I think this is red color (or is it "bright" pixels?)
+	blobParams.targetBlobColor = 255;
+
+	blobParams.w_Circularity = 255;
+	blobParams.w_InertiaRatio = 0;
+	blobParams.w_Convexity = 0;
+	blobParams.w_BlobColor = 255;
 
 	blobParams.filterByError = false;
 	blobParams.filterByArea = true;
@@ -66,10 +86,7 @@ int main() {
 	blobParams.filterByInertia = true;
 	blobParams.filterByConvexity = true;
 
-	blobParams.w_Circularity = 100;
-	blobParams.w_InertiaRatio = 255;
-	blobParams.w_Convexity = 100;
-	blobParams.w_BlobColor = 50;
+
 
 
 	// create a threshold object
@@ -145,8 +162,22 @@ int main() {
 	fclose(pFile);
 #endif  //FOUNDBLOBS_TO_FILE
 
+#ifdef SAVEOFF_FRAMES
+	// clear the TestImages folder
+	system("rm -r TestImages");
+	if (mkdir("TestImages", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) == 0) {
+		std::cout << "TestImages folder successfully cleared!" << std::endl;
+	}
+	// get an RGB frame for reference
+	cv::imwrite("TestImages/frame_0.jpg", frame);
+#endif // SAVEOFF_FRAMES
 
-// MAIN LOOP
+
+
+
+
+
+	// MAIN LOOP
 	for (; ;) {
 
 		// capture a frame from camera
@@ -174,7 +205,7 @@ int main() {
 
 
 		// compute and display the fps MAVG
-		std::cout << FPSclk.fps() << std::endl;
+		std::cout << "Average FPS:  " << FPSclk.fps() << std::endl;
 
 
 
@@ -236,6 +267,23 @@ int main() {
 #endif //DO_KALMAN_FILTER
 		cv::namedWindow("Blobs");
 		cv::imshow("Blobs",frame);
+
+#ifdef SAVEOFF_FRAMES
+		frameCount++;
+		if (frameCount % 30 == 0) { // Save one in every 30 frames (~1 frame/sec)
+
+			// add a Frame number label
+			std::stringstream frameNoStr;
+			frameNoStr << "Frame # " << frameCount;
+			cv::putText(frame,frameNoStr.str(),cv::Point2f(20,20),FONT_HERSHEY_PLAIN,1,cv::Scalar(0,0,255));
+
+			// save off the file
+			frameNoStr.str("");  // clear the string
+			frameNoStr << "TestImages/frame_" << frameCount << ".jpg";
+			cv::imwrite(frameNoStr.str(), frame);
+
+		}
+#endif // SAVEOFF_FRAMES
 
 	}
 
