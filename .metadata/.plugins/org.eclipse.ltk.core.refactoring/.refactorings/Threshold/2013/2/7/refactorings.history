@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Threshold/src/SimplePnP.cpp&apos; to &apos;Threshold.cpp&apos;" description="Rename resource &apos;SimplePnP.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/SimplePnP.cpp" name="Threshold.cpp" stamp="1360818179987" updateReferences="true"/>
+</session>

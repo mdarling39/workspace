@@ -1,0 +1,254 @@
+//============================================================================
+// Name        : SimplePnP.cpp
+// Author      : Michael Darling
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <numeric>
+#include <fstream>
+#include <ctime>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/features2d/features2d.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+
+#define IN2MM 25.4
+#define MM2IN 1/IN2MM
+#define PI 3.14159265359
+#define RAD2DEG 180/PI
+#define DEG2RAD PI/180
+
+#define AXES_LN 10*IN2MM
+#define NO_LEDS 5
+
+
+int getCalibrationData(const std::string filename, cv::Mat &cameraMatrix, cv::Mat &distCoeffs);
+int readPoints(const char* pointsFilename, std::vector<cv::Point2f> &points);
+int readPoints(const char* pointsFilename, std::vector<cv::Point3f> &points);
+double scaledReprojError(cv::vector<cv::Point2f> imagePoints, cv::vector<cv::Point2f> imagePoints);
+
+int main() {
+
+	// ## Make these inputs to the function ##
+	const char* camDataFilename = "/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration/Zoomed In/PS3Eye_out_camera_data.yml";
+	const char* objPointsFilename = "/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration/Zoomed In/LEDPos copy2.txt";
+	const char* imageFilename = "/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration/Zoomed In/Test Images/Test3.jpg";
+	const char* imagePointsFilename = "/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration/Zoomed In/imagePts3.txt";
+
+	// Open the correct image
+	std::cout << imageFilename << std::endl << imagePointsFilename << std::endl;
+	cv::Mat img = cv::imread(imageFilename);
+	cv::namedWindow("Window");
+	cv::imshow("Window", img);
+
+	// Get the camera matrix and distortion coefficients
+	cv::Mat cameraMatrix, distCoeffs;
+	getCalibrationData(camDataFilename, cameraMatrix, distCoeffs);
+
+
+
+	// Solve pose estimation problem
+
+	// get the object points (3d) and image points (2d)
+	std::vector<cv::Point3f> objectPoints;
+	std::vector<cv::Point2f> imagePoints;
+
+	std::cout << "Object Points:" << std::endl;
+	readPoints(objPointsFilename, objectPoints);
+
+	std::cout << "\nImage Points:" << std::endl;
+	readPoints(imagePointsFilename, imagePoints);
+
+
+	// Provide an initial guess: (give an approximate attitude--assume following from behind)
+	// (OpenCV reference frame)  NOTE: rvec has weird quaternion convention, but [0,0,0]
+	// corresponds to following direclty behind
+	cv::Mat rvec(3,1,CV_64F);
+	cv::Mat tvec(3,1,CV_64F);
+	rvec.at<double>(0,0) = 0*DEG2RAD;
+	rvec.at<double>(1,0) = 0*DEG2RAD;
+	rvec.at<double>(2,0) = 0*DEG2RAD;
+	tvec.at<double>(0,0) = 0*IN2MM;
+	tvec.at<double>(1,0) = 0*IN2MM;
+	tvec.at<double>(2,0) = 100*IN2MM;
+	//
+
+	// solve for the pose that minimizes reprojection error
+	// UNITS:  (objectPoints = mm, imagePoints = pixels, ... , rvec = radians, tvec = mm)
+	clock_t t;
+	t = clock();
+	cv::solvePnP(objectPoints, imagePoints, cameraMatrix, distCoeffs, rvec, tvec, 1, CV_EPNP);
+	t = clock() - t;
+	std::cout << "\nTime To Estimate Pose: " << ((float)t/CLOCKS_PER_SEC*1000) << " ms" << std::endl;
+
+	// compute the theta and r parts of the Euler rotation
+	/*
+	double rvec_theta = cv::norm(rvec, cv::NORM_L2);
+	cv::Mat rvec_r = rvec/rvec_theta;
+	*/
+
+
+	// get rotation matrix
+	cv::Mat rotMat, CV2B(3,3,CV_64F,cv::Scalar(0)), B2CV;
+	CV2B.at<double>(0,2) = 1.0;
+	CV2B.at<double>(1,0) = 1.0;
+	CV2B.at<double>(2,1) = 1.0;
+	cv::transpose(CV2B,B2CV); 		// CV2B and B2CV convert between OpenCV
+	cv::Rodrigues(rvec,rotMat);     // frame convention and typical body frame
+
+
+	// extract phi, theta, psi  (NOTE: these are for typical body frame)
+	double phi, theta, psi;
+	rotMat = CV2B * rotMat * B2CV;	// change the rotation matrix from CV convention to RHS body frame
+	theta = asin(-rotMat.at<double>(2,0));				// get the Euler angles
+	psi = acos(rotMat.at<double>(0,0) / cos(theta));
+	phi = asin(rotMat.at<double>(2,1) / cos(theta));
+
+
+	// add changes to the projection for troubleshooting
+	/*
+	phi 	+= 0*DEG2RAD;			// phi, theta, psi in body frame
+	theta 	+= 0*DEG2RAD;
+	psi 	+= 0*DEG2RAD;
+	tvec.at<double>(0,0) += 0*IN2MM;  //tvec in OpenCV frame
+	tvec.at<double>(1,0) += 0*IN2MM;
+	tvec.at<double>(2,0) += 0*IN2MM;
+	*/
+
+	// reconstruct rotation matrix: from object frame to camera frame
+	rotMat.at<double>(0,0) = cos(theta)*cos(psi);
+	rotMat.at<double>(0,1) = sin(phi)*sin(theta)*cos(psi) - cos(phi)*sin(psi);
+	rotMat.at<double>(0,2) = cos(phi)*sin(theta)*cos(psi) + sin(phi)*sin(psi);
+	rotMat.at<double>(1,0) = cos(theta)*sin(psi);
+	rotMat.at<double>(1,1) = sin(phi)*sin(theta)*sin(psi) + cos(phi)*cos(psi);
+	rotMat.at<double>(1,2) = cos(phi)*sin(theta)*sin(psi) - sin(phi)*cos(psi);
+	rotMat.at<double>(2,0) = -sin(theta);
+	rotMat.at<double>(2,1) = sin(phi)*cos(theta);
+	rotMat.at<double>(2,2) = cos(phi)*cos(theta);
+
+
+	// rewrite the rvec from rotation matrix
+	rotMat = B2CV * rotMat * CV2B;	// convert RHS body rotation matrix to OpenCV rotation matrix
+	cv::Rodrigues(rotMat,rvec);
+
+
+	// print to standard output
+	cv::Mat tvec_body;
+	tvec_body.push_back(tvec.at<double>(2,0));	// get tvec in body coordinates to display to
+	tvec_body.push_back(tvec.at<double>(0,0));  // standard output
+	tvec_body.push_back(tvec.at<double>(1,0));
+	std::cout << "\nPhi, Theta, Psi: " << (phi*RAD2DEG) << ", " << (theta*RAD2DEG) <<
+			", " << (psi*RAD2DEG) << std::endl;
+	std::cout << "\ntvec:\n" << (tvec_body*MM2IN) << std::endl;
+	std::cout << "\nTotal Distance: " << (cv::norm(tvec,cv::NORM_L2)*MM2IN) << std::endl;
+
+
+	// compute the (re)projected points
+	cv::vector<cv::Point3f> axesPoints;		// create points for coordinate axes
+	axesPoints.push_back(cv::Point3f(0,0,0));
+	axesPoints.push_back(cv::Point3f(AXES_LN,0,0));
+	axesPoints.push_back(cv::Point3f(0,AXES_LN,0));
+	axesPoints.push_back(cv::Point3f(0,0,AXES_LN));
+
+	cv::vector<cv::Point2f> projImagePoints, projAxesPoints;
+	cv::projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, projImagePoints);
+	cv::projectPoints(axesPoints, rvec, tvec, cameraMatrix, distCoeffs, projAxesPoints);
+	std::cout << "\nProjected Image Points:\n" << projImagePoints << std::endl;
+
+	// ## Need to compute the projected error to determine feasibility  Decide on a threshold
+	double reprojErr = scaledReprojError(imagePoints, projImagePoints);
+	std::cout << "Reprojection Error " << reprojErr << std::endl << std::endl;
+
+	// Plot the LED's and reprojected positions on the image
+	for (int i=0; i<NO_LEDS; i++) {
+		cv::circle(img,imagePoints[i], 3, cv::Scalar(0,0,255), 2);
+		cv::circle(img,projImagePoints[i], 3, cv::Scalar(0,255,0), 2);
+		cv::line(img,projAxesPoints[0], projAxesPoints[1], cv::Scalar(0,0,255), 2);
+		cv::line(img,projAxesPoints[0], projAxesPoints[2], cv::Scalar(0,255,0), 2);
+		cv::line(img,projAxesPoints[0], projAxesPoints[3], cv::Scalar(255,0,0), 2);
+	}
+
+	cv::imshow("Window",img);
+	//cv::imwrite("/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration/Zoomed In/VisionOut5.jpg",img);
+
+	std::cout << "DONE!\n" << std::endl;
+	cv::waitKey(0);
+	return 0;
+}
+
+
+int getCalibrationData(const std::string filename, cv::Mat &cameraMatrix, cv::Mat &distCoeffs) {
+
+	// Open xml file with camera properties
+	cv::FileStorage fs(filename, cv::FileStorage::READ);
+	fs["Camera_Matrix"] >> cameraMatrix;
+	fs["Distortion_Coefficients"] >> distCoeffs;
+
+	// write to standard output
+	std::cout << "Read from: " << filename << "\n" << std::endl;
+	std::cout << "cameraMatrix:\n" << cameraMatrix << "\n" << std::endl;
+	std::cout << "distCoeffs:\n" << distCoeffs << "\n" << std::endl;
+	fs.release();
+	return 1;
+}
+
+int readPoints(const char* pointsFilename, std::vector<cv::Point2f> &points) {
+	std::ifstream pointsFile;
+	pointsFile.open(pointsFilename);
+	if (!pointsFile.is_open()) {
+		std::cout << "Could not open points file" << std::endl;
+		pointsFile.close();
+		exit(-1);
+	} else {
+		float p1, p2;
+		while (pointsFile >> p1 >> p2) {
+			points.push_back(cv::Point2f(p1,p2));
+		}
+	}
+	std::cout << points << std::endl;
+	pointsFile.close();
+
+	return 1;
+}
+
+int readPoints(const char* pointsFilename, std::vector<cv::Point3f> &points) {
+	std::ifstream pointsFile;
+	pointsFile.open(pointsFilename);
+	if (!pointsFile.is_open()) {
+		std::cout << "Could not open points file" << std::endl;
+		pointsFile.close();
+		exit(-1);
+	} else {
+		float p1, p2, p3;
+		while (pointsFile >> p1 >> p2 >> p3) {
+			points.push_back(cv::Point3f(p1,p2,p3));
+		}
+	}
+	std::cout << points << std::endl;
+	pointsFile.close();
+	return 1;
+}
+
+
+double scaledReprojError(std::vector<cv::Point2f> imagePoints, std::vector<cv::Point2f> projImagePoints) {
+	// Computes the scaled reprojection error.  Equal to the sum of the distances between the image
+	// points and the reprojected image points divided by the maximum distance between image points
+
+
+	double diff[NO_LEDS];
+	for (int i=0; i<NO_LEDS; i++) {
+		diff[i] = cv::norm(imagePoints[i] - projImagePoints[i]);
+	}
+
+	double sum, max;
+	max = *std::max_element(diff, diff+NO_LEDS);
+	sum = std::accumulate(diff, diff+NO_LEDS, 0.0);
+
+	return sum/max;
+}

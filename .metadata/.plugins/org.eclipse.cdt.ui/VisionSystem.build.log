@@ -1,0 +1,27 @@
+11:28:04 **** Build of configuration Debug for project VisionSystem ****
+make all 
+Building file: ../src/PnPObj.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PnPObj.d" -MT"src/PnPObj.d" -o "src/PnPObj.o" "../src/PnPObj.cpp"
+Finished building: ../src/PnPObj.cpp
+ 
+Building file: ../src/Threshold.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
+Finished building: ../src/Threshold.cpp
+ 
+Building file: ../src/VisionSystem.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/VisionSystem.d" -MT"src/VisionSystem.d" -o "src/VisionSystem.o" "../src/VisionSystem.cpp"
+../src/VisionSystem.cpp: In function 'int main()':
+../src/VisionSystem.cpp:129: warning: unused variable 'fpsMAVG'
+Finished building: ../src/VisionSystem.cpp
+ 
+Building target: VisionSystem
+Invoking: MacOS X C++ Linker
+g++ -m32 -L/opt/local/lib -o "VisionSystem"  ./src/FPSCounter.o ./src/PnPObj.o ./src/Threshold.o ./src/VisionSystem.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: VisionSystem
+ 
+
+11:28:12 Build Finished (took 8s.3ms)
+

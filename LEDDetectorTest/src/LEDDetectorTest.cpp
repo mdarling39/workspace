@@ -6,20 +6,20 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
+// GLOBAL DEFINES
+#include "GlobalDefines.hpp"
+
 #include <iostream>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/video/tracking.hpp>
-#include "Threshold.h"
-#include "KalmanFilter.h"
-#include "FPSCounter.h"
-
-#define FOUNDBLOBS_TO_FILE
-#define SAVEOFF_FRAMES
-//#define DO_KALMAN_FILTER
-
+#include "Threshold.hpp"
+#include "KalmanFilter.hpp"
+#include "FPSCounter.hpp"
+#include "customblobdetector.hpp"
 
 #ifdef FOUNDBLOBS_TO_FILE
+#include <stdio.h>  // FORLINUX
 FILE *pFile;
 #endif // FOUNDBLOBS_TO_FILE
 
@@ -38,12 +38,12 @@ int main() {
 	cv::VideoCapture cap(1);
 	cap.set(CV_CAP_PROP_FRAME_WIDTH,640.0);
 	cap.set(CV_CAP_PROP_FRAME_HEIGHT,480.0);
-	cap.set(CV_CAP_PROP_FPS,60);
+	// cap.set(CV_CAP_PROP_FPS,60);
 	if (!cap.isOpened()) {
 		return -1;
 	}
-	for(int i=0; i<20; i++) {
-		cap >> frame;
+	for(int i=0; i<120; i++) { // increased number of frames to be certain that all
+		cap >> frame;		   // transients die out
 	}
 
 
@@ -193,7 +193,6 @@ int main() {
 		B = channels[0];
 		frame = R;
 
-
 		// detect blobs in image
 		pFile = fopen("testfile.txt","a");
 		myThreshObj.set_image(frame);
@@ -267,6 +266,7 @@ int main() {
 #endif //DO_KALMAN_FILTER
 		cv::namedWindow("Blobs");
 		cv::imshow("Blobs",frame);
+		cv::waitKey(1);   //need to wait to keep the image displayed
 
 #ifdef SAVEOFF_FRAMES
 		frameCount++;

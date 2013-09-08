@@ -5,7 +5,7 @@
  *      Author: michaeldarling
  */
 
-#include "FPSCounter.h"
+#include "FPSCounter.hpp"
 
 
 // default constructor

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CompleteVision_Draft1&apos; to &apos;CompleteVision_MAIN&apos;" description="Rename resource &apos;CompleteVision_Draft1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/CompleteVision_Draft1" name="CompleteVision_MAIN" stamp="1377145913739" updateReferences="true"/>
+</session>

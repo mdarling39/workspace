@@ -1,0 +1,15 @@
+22:09:00 **** Incremental Build of configuration Debug for project BItmaskTests ****
+make all 
+Building file: ../src/BItmaskTests.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
+Finished building: ../src/BItmaskTests.cpp
+ 
+Building target: BItmaskTests
+Invoking: MacOS X C++ Linker
+g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
+Finished building target: BItmaskTests
+ 
+
+22:09:05 Build Finished (took 4s.491ms)
+

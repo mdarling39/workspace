@@ -230,7 +230,7 @@ std::vector<double> PnPObj::getState() {
 	std::vector<double> state(6);
 	state[0] = tvec.at<double>(2,0);
 	state[1] = tvec.at<double>(0,0);
-	state[2] = tvec.at<double>(1,0);;
+	state[2] = tvec.at<double>(1,0);
 	state[3] = phi;
 	state[4] = theta;
 	state[5] = psi;

@@ -5,7 +5,7 @@
  *      Author: michaeldarling
  */
 
-#include "Threshold.h"
+#include "Threshold.hpp"
 
 
 // Default constructor
@@ -17,7 +17,7 @@ Threshold::Threshold() {
 
 // Constructor with image specified
 Threshold::Threshold(cv::Mat src) {
-	Threshold::Threshold();
+	Threshold();    //FORLINUX
 	Threshold::set_image(src);
 }
 
@@ -49,7 +49,7 @@ void Threshold::detect_blobs() {
 	blob_detector->detect(img, keyPoints);
 
 	// display results
-	//std::cout << (double)keypoints.size() << " points detected" << std::endl;
+	//std::cout << (double)keyPoints.size() << " points detected" << std::endl;
 
 }
 

@@ -1,5 +1,6 @@
 src/customblobdetector.d src/customblobdetector.o:  \
  ../src/customblobdetector.cpp ../src/customblobdetector.hpp \
+  ../src/GlobalDefines.hpp \
   /opt/local/include/opencv2/features2d/features2d.hpp \
   /opt/local/include/opencv2/core/core.hpp \
   /opt/local/include/opencv2/core/types_c.h \
@@ -20,9 +21,12 @@ src/customblobdetector.d src/customblobdetector.o:  \
   /opt/local/include/opencv2/core/core_c.h \
   /opt/local/include/opencv2/imgproc/imgproc_c.h \
   /opt/local/include/opencv2/core/internal.hpp \
+  /opt/local/include/opencv2/core/core.hpp \
   /opt/local/include/opencv2/flann/miniflann.hpp
 
 ../src/customblobdetector.hpp:
+
+../src/GlobalDefines.hpp:
 
 /opt/local/include/opencv2/features2d/features2d.hpp:
 
@@ -63,5 +67,7 @@ src/customblobdetector.d src/customblobdetector.o:  \
 /opt/local/include/opencv2/imgproc/imgproc_c.h:
 
 /opt/local/include/opencv2/core/internal.hpp:
+
+/opt/local/include/opencv2/core/core.hpp:
 
 /opt/local/include/opencv2/flann/miniflann.hpp:

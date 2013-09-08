@@ -1,0 +1,15 @@
+11:38:17 **** Incremental Build of configuration Debug for project SimplePnP ****
+make all 
+Building file: ../src/SimplePnP.cpp
+Invoking: GCC C++ Compiler
+g++ -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SimplePnP.d" -MT"src/SimplePnP.d" -o "src/SimplePnP.o" "../src/SimplePnP.cpp"
+Finished building: ../src/SimplePnP.cpp
+ 
+Building target: SimplePnP
+Invoking: MacOS X C++ Linker
+g++ -L/opt/local/lib -o "SimplePnP"  ./src/SimplePnP.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d
+Finished building target: SimplePnP
+ 
+
+11:38:18 Build Finished (took 1s.413ms)
+

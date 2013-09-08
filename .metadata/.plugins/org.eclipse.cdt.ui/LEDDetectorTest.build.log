@@ -1,0 +1,30 @@
+11:27:42 **** Build of configuration Debug for project LEDDetectorTest ****
+make all 
+Building file: ../src/KalmanFilter.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/KalmanFilter.d" -MT"src/KalmanFilter.d" -o "src/KalmanFilter.o" "../src/KalmanFilter.cpp"
+Finished building: ../src/KalmanFilter.cpp
+ 
+Building file: ../src/LEDDetectorTest.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/LEDDetectorTest.d" -MT"src/LEDDetectorTest.d" -o "src/LEDDetectorTest.o" "../src/LEDDetectorTest.cpp"
+Finished building: ../src/LEDDetectorTest.cpp
+ 
+Building file: ../src/Threshold.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
+Finished building: ../src/Threshold.cpp
+ 
+Building file: ../src/customblobdetector.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/customblobdetector.d" -MT"src/customblobdetector.d" -o "src/customblobdetector.o" "../src/customblobdetector.cpp"
+Finished building: ../src/customblobdetector.cpp
+ 
+Building target: LEDDetectorTest
+Invoking: MacOS X C++ Linker
+g++ -m32 -L/opt/local/lib -o "LEDDetectorTest"  ./src/FPSCounter.o ./src/KalmanFilter.o ./src/LEDDetectorTest.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_video -lopencv_highgui -lopencv_features2d -lopencv_objdetect -lopencv_imgproc
+Finished building target: LEDDetectorTest
+ 
+
+11:27:51 Build Finished (took 8s.770ms)
+

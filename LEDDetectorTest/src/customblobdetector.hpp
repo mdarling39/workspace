@@ -9,6 +9,7 @@
 #include "cvconfig.h"
 #endif
 
+#include "GlobalDefines.hpp"
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -16,6 +17,11 @@
 #include <opencv2/core/internal.hpp>
 #include <opencv2/flann/miniflann.hpp>
 #include <algorithm>
+
+// make sure fprintf can be used
+#ifdef FOUNDBLOBS_TO_FiLE
+#include <stdio.h>
+#endif //FOUNDBLOBS_TO_FILE
 
 #ifdef HAVE_TEGRA_OPTIMIZATION
 #include "opencv2/features2d/features2d_tegra.hpp"

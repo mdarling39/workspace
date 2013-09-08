@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CompleteVision_MAIN/src/CompleteVision_Draft1.cpp&apos; to &apos;CompleteVision_MAIN.cpp&apos;" description="Rename resource &apos;CompleteVision_Draft1.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/CompleteVision_Draft1.cpp" name="CompleteVision_MAIN.cpp" stamp="1377145944666" updateReferences="true"/>
+</session>

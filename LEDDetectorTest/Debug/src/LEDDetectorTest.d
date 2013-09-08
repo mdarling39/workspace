@@ -1,5 +1,5 @@
 src/LEDDetectorTest.d src/LEDDetectorTest.o: ../src/LEDDetectorTest.cpp \
-  /opt/local/include/opencv2/core/core.hpp \
+  ../src/GlobalDefines.hpp /opt/local/include/opencv2/core/core.hpp \
   /opt/local/include/opencv2/core/types_c.h \
   /opt/local/include/opencv2/core/version.hpp \
   /opt/local/include/opencv2/core/operations.hpp \
@@ -10,7 +10,7 @@ src/LEDDetectorTest.d src/LEDDetectorTest.o: ../src/LEDDetectorTest.cpp \
   /opt/local/include/opencv2/video/tracking.hpp \
   /opt/local/include/opencv2/imgproc/imgproc.hpp \
   /opt/local/include/opencv2/imgproc/types_c.h \
-  /opt/local/include/opencv2/core/core_c.h ../src/Threshold.h \
+  /opt/local/include/opencv2/core/core_c.h ../src/Threshold.hpp \
   /opt/local/include/opencv2/imgproc/imgproc.hpp \
   /opt/local/include/opencv2/objdetect/objdetect.hpp \
   /opt/local/include/opencv2/features2d/features2d.hpp \
@@ -19,8 +19,10 @@ src/LEDDetectorTest.d src/LEDDetectorTest.o: ../src/LEDDetectorTest.cpp \
   /opt/local/include/opencv2/flann/config.h ../src/customblobdetector.hpp \
   /opt/local/include/opencv2/imgproc/imgproc_c.h \
   /opt/local/include/opencv2/core/internal.hpp \
-  /opt/local/include/opencv2/flann/miniflann.hpp ../src/KalmanFilter.h \
-  ../src/FPSCounter.h
+  /opt/local/include/opencv2/flann/miniflann.hpp ../src/KalmanFilter.hpp \
+  ../src/FPSCounter.hpp
+
+../src/GlobalDefines.hpp:
 
 /opt/local/include/opencv2/core/core.hpp:
 
@@ -46,7 +48,7 @@ src/LEDDetectorTest.d src/LEDDetectorTest.o: ../src/LEDDetectorTest.cpp \
 
 /opt/local/include/opencv2/core/core_c.h:
 
-../src/Threshold.h:
+../src/Threshold.hpp:
 
 /opt/local/include/opencv2/imgproc/imgproc.hpp:
 
@@ -68,6 +70,6 @@ src/LEDDetectorTest.d src/LEDDetectorTest.o: ../src/LEDDetectorTest.cpp \
 
 /opt/local/include/opencv2/flann/miniflann.hpp:
 
-../src/KalmanFilter.h:
+../src/KalmanFilter.hpp:
 
-../src/FPSCounter.h:
+../src/FPSCounter.hpp:

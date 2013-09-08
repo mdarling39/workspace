@@ -1,5 +1,6 @@
 src/KalmanFilter.d src/KalmanFilter.o: ../src/KalmanFilter.cpp \
-  ../src/KalmanFilter.h /opt/local/include/opencv2/core/core.hpp \
+  ../src/KalmanFilter.hpp ../src/GlobalDefines.hpp \
+  /opt/local/include/opencv2/core/core.hpp \
   /opt/local/include/opencv2/core/types_c.h \
   /opt/local/include/opencv2/core/version.hpp \
   /opt/local/include/opencv2/core/operations.hpp \
@@ -12,7 +13,9 @@ src/KalmanFilter.d src/KalmanFilter.o: ../src/KalmanFilter.cpp \
   /opt/local/include/opencv2/flann/defines.h \
   /opt/local/include/opencv2/flann/config.h
 
-../src/KalmanFilter.h:
+../src/KalmanFilter.hpp:
+
+../src/GlobalDefines.hpp:
 
 /opt/local/include/opencv2/core/core.hpp:
 

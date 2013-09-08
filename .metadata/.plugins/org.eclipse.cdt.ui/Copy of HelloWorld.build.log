@@ -1,0 +1,26 @@
+12:45:27 **** Rebuild of configuration Debug for project Copy of HelloWorld ****
+Info: Internal Builder is used for build
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -o src/HelloWorld.o ../src/HelloWorld.cpp 
+g++ -m32 -L/opt/local/lib -o "Copy of HelloWorld" src/HelloWorld.o -lopencv_core -lopencv_highgui -lopencv_imgproc 
+Undefined symbols for architecture i386:
+  "cv::projectPoints(cv::_InputArray const&, cv::_InputArray const&, cv::_InputArray const&, cv::_InputArray const&, cv::_InputArray const&, cv::_OutputArray const&, cv::_OutputArray const&, double)", referenced from:
+      computeReprojectionErrors(std::vector<std::vector<cv::Point3_<float>, std::allocator<cv::Point3_<float> > >, std::allocator<std::vector<cv::Point3_<float>, std::allocator<cv::Point3_<float> > > > > const&, std::vector<std::vector<cv::Point_<float>, std::allocator<cv::Point_<float> > >, std::allocator<std::vector<cv::Point_<float>, std::allocator<cv::Point_<float> > > > > const&, std::vector<cv::Mat, std::allocator<cv::Mat> > const&, std::vector<cv::Mat, std::allocator<cv::Mat> > const&, cv::Mat const&, cv::Mat const&, std::vector<float, std::allocator<float> >&)in HelloWorld.o
+  "cv::calibrateCamera(cv::_InputArray const&, cv::_InputArray const&, cv::Size_<int>, cv::_OutputArray const&, cv::_OutputArray const&, cv::_OutputArray const&, cv::_OutputArray const&, int, cv::TermCriteria)", referenced from:
+      runCalibration(Settings&, cv::Size_<int>&, cv::Mat&, cv::Mat&, std::vector<std::vector<cv::Point_<float>, std::allocator<cv::Point_<float> > >, std::allocator<std::vector<cv::Point_<float>, std::allocator<cv::Point_<float> > > > >, std::vector<cv::Mat, std::allocator<cv::Mat> >&, std::vector<cv::Mat, std::allocator<cv::Mat> >&, std::vector<float, std::allocator<float> >&, double&)in HelloWorld.o
+  "cv::findCirclesGrid(cv::_InputArray const&, cv::Size_<int>, cv::_OutputArray const&, int, cv::Ptr<cv::FeatureDetector> const&)", referenced from:
+      _main in HelloWorld.o
+  "cv::SimpleBlobDetector::Params::Params()", referenced from:
+      _main in HelloWorld.o
+  "cv::SimpleBlobDetector::SimpleBlobDetector(cv::SimpleBlobDetector::Params const&)", referenced from:
+      _main in HelloWorld.o
+  "cv::drawChessboardCorners(cv::_OutputArray const&, cv::Size_<int>, cv::_InputArray const&, bool)", referenced from:
+      _main in HelloWorld.o
+  "cv::findChessboardCorners(cv::_InputArray const&, cv::Size_<int>, cv::_OutputArray const&, int)", referenced from:
+      _main in HelloWorld.o
+  "cv::getOptimalNewCameraMatrix(cv::_InputArray const&, cv::_InputArray const&, cv::Size_<int>, double, cv::Size_<int>, cv::Rect_<int>*, bool)", referenced from:
+      _main in HelloWorld.o
+ld: symbol(s) not found for architecture i386
+collect2: ld returned 1 exit status
+
+12:45:31 Build Finished (took 3s.554ms)
+

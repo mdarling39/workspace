@@ -1,4 +1,5 @@
-src/Threshold.d src/Threshold.o: ../src/Threshold.cpp ../src/Threshold.h \
+src/Threshold.d src/Threshold.o: ../src/Threshold.cpp \
+  ../src/Threshold.hpp ../src/GlobalDefines.hpp \
   /opt/local/include/opencv2/core/core.hpp \
   /opt/local/include/opencv2/core/types_c.h \
   /opt/local/include/opencv2/core/version.hpp \
@@ -19,7 +20,9 @@ src/Threshold.d src/Threshold.o: ../src/Threshold.cpp ../src/Threshold.h \
   /opt/local/include/opencv2/core/internal.hpp \
   /opt/local/include/opencv2/flann/miniflann.hpp
 
-../src/Threshold.h:
+../src/Threshold.hpp:
+
+../src/GlobalDefines.hpp:
 
 /opt/local/include/opencv2/core/core.hpp:
 
