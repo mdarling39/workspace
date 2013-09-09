@@ -1,7 +1,4 @@
 
-
-
-
 // SYSTEM INCLUDES
 #include <iostream>
 #include <iterator>
@@ -97,13 +94,13 @@ int main() {
 
 
 	std::cout << "   grabbing 'throwaway' images" << std::endl;
-	cv::namedWindow("Throwaway");
 
 	for (int i=0 ; i<120; i++)
 	{
 		cap >> frame;
 
 #ifdef DEBUG_VIDEO
+		cv::namedWindow("Throwaway");
 		cv::imshow("Throwaway",frame);
 		cv::waitKey(1);
 #endif /*DEBUG_VIDEO*/

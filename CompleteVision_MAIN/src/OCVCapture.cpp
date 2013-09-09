@@ -88,6 +88,18 @@ void OCVCapture::setDesiredSize(uint32_t width, uint32_t height)
 	}
 }
 
+void OCVCapture::setDesiredFramerate(uint32_t fps)
+{
+	if (isOpen())
+	{
+		reportError("cannot change frame rate while open");
+		return;
+	}
+	
+		// Not doing any error checking for right now
+		m_desired_frame_rate = fps;
+}
+
 static const char* messageHeader = "Capture: ";
 
 void OCVCapture::reportError(const char *error)

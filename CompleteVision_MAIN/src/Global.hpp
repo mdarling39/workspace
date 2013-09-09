@@ -19,8 +19,8 @@
 
 
 // Modes
-//#define DEBUG_STDOUT			// write debug info to stdout
-#define DEBUG_VIDEO				// display video debug data
+#define DEBUG_STDOUT			// write debug info to stdout
+//#define DEBUG_VIDEO				// display video debug data
 //#define FOUNDBLOBS_TO_FILE	// write blob coordinates to file
 //#define SAVEOFF_FRAMES		// save off frames to memory
 //#define POSE_TO_FILE			// write pose estimates to file

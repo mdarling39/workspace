@@ -55,7 +55,7 @@
 		CamObj::close();
 	}
 
-	void CamObj::open(int dev){
+	bool CamObj::open(int dev){
 
 		if (!CamObj::open_linux(dev)){
 			std::cerr << "Could not open device for capturing!" << std::endl;
@@ -175,7 +175,7 @@
 		cap.setDesiredSize(desiredWidth,desiredHeight);
 
 		// verify that the properties were set correctly
-		int w = cap.wdith()
+		int w = cap.width();
 		int h = cap.height();
 
 		// return true on success
@@ -191,7 +191,7 @@
 	bool CamObj::set_framerate_linux(int desired_fps){
 
 		// set framerate
-		cap.setDesiredFramerate(desired_fps);  //TODO:  Need to ad setter to OCVCapture
+		cap.setDesiredFramerate(desired_fps);  //TODO:  Need to add setter to OCVCapture
 
 		//verify that the framerate was set correclty
 		int fps = cap.frameRate();

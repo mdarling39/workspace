@@ -67,6 +67,9 @@ public:
 	// so do not assume the images you retrieve from the capture object
 	// are the requested size.
 	void setDesiredSize(uint32_t width, uint32_t height);
+	
+	// Sets the desired camera framerate
+	void setDesiredFramerate(uint32_t);
 
 	// Before capturing images you must open the capture object.
 	// The open call returns true if it was successful.
