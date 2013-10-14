@@ -115,6 +115,7 @@
 		cap.set(CV_CAP_PROP_FRAME_WIDTH,desiredWidth);
 		cap.set(CV_CAP_PROP_FRAME_HEIGHT,desiredHeight);
 
+		/* Doesn't work anyways
 		// verify that the properties were set correctly
 		int w = cap.get(CV_CAP_PROP_FRAME_WIDTH);
 		int h = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
@@ -127,6 +128,8 @@
 					<< w << "x" << h << std::endl;
 			return false;
 		}
+		*/
+		return true;
 	}
 
 	bool CamObj::set_framerate_osx(int desired_fps){
@@ -134,6 +137,7 @@
 		// set framerate
 		cap.set(CV_CAP_PROP_FPS,desired_fps);
 
+		/* Doesn't work anyways
 		//verify that the framerate was set correclty
 		int fps = cap.get(CV_CAP_PROP_FPS);
 
@@ -145,6 +149,8 @@
 					<< fps << std::endl;
 			return false;
 		}
+		*/
+		return true;
 	}
 
 	void CamObj::get_frame_osx(cv::Mat &img){
@@ -154,60 +160,39 @@
 #elif LINUX
 	bool CamObj::open_linux(int dev){
 
-		// open the device
-		cap.open();
+		char devName[15];
+		sprintf(devName,"/dev/video%d",dev);
+		cap.set_dev_name(devName);
+		cap.set_pix_fmt(V4L2_PIX_FMT_MJPEG);
+		cap.customInit = true;
 
-		// check if opened successfully
-		if (cap.isOpen()){
-			return true;
-		}else{
-			return false;
-		}
+		// open the device
+		cap.open_device();
+		return true;
+
 	}
 
 	void CamObj::close_linux(){
-		cap.close();
+		cap.close_device();
 	}
 
 	bool CamObj::set_image_size_linux(int desiredWidth, int desiredHeight){
 
-		// set properties
-		cap.setDesiredSize(desiredWidth,desiredHeight);
+	    cap.set_width(desiredWidth);                     // set frame dims.
+	    cap.set_height(desiredHeight);
 
-		// verify that the properties were set correctly
-		int w = cap.width();
-		int h = cap.height();
-
-		// return true on success
-		if ((w==desiredWidth) & (h==desiredHeight)){
-			return true;
-		}else{
-			std::cout << "WARNING:  Could not set desired frame size.  Actual size: "
-					<< w << "x" << h << std::endl;
-			return false;
-		}
 	}
 
 	bool CamObj::set_framerate_linux(int desired_fps){
 
 		// set framerate
-		cap.setDesiredFramerate(desired_fps);  //TODO:  Need to add setter to OCVCapture
+		cap.set_fps(desired_fps);
 
-		//verify that the framerate was set correclty
-		int fps = cap.frameRate();
-
-		// return true on success
-		if (fps==desired_fps){
-			return true;
-		}else{
-			std::cout << "WARNING:  Could not set desired framerate.  Actual fps: "
-					<< fps << std::endl;
-			return false;
-		}
 	}
 
 	void CamObj::get_frame_linux(cv::Mat &img){
-		cap.grab();
-		cap.rgb(img);
+
+		cap.grab_frame(img);
+
 	}
 #endif

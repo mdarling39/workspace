@@ -59,7 +59,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="DEBUG__CompleteVision_Draft1__DEBUG.cpp|OCVCapture.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="serialCommBeagle.cpp|BBBSerial.cpp|v4l2Cap.cpp|v4l2Cap_example.cpp|DEBUG__CompleteVision_Draft1__DEBUG.cpp|OCVCapture.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -107,7 +107,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="DEBUG__CompleteVision_Draft1__DEBUG.cpp|OCVCapture.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="serialCommBeagle.cpp|BBBSerial.cpp|v4l2Cap.cpp|v4l2Cap_example.cpp|DEBUG__CompleteVision_Draft1__DEBUG.cpp|OCVCapture.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

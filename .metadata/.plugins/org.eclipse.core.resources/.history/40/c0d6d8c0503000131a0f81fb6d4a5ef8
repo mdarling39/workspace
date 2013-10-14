@@ -1,0 +1,93 @@
+/*
+ * BBBSerial.cpp
+ *
+ *  Created on: Oct 7, 2013
+ *      Author: michaeldarling
+ */
+
+#include "BBBSerial.h"
+
+BBBSerial::BBBSerial(){
+
+	// To enable UART1:
+	// # These instructions describe how to enable UART 1 on startup
+	// # Reference:
+	// # http://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/ex$
+	//
+	// mkdir /mnt/boot
+	// mount /dev/mmcblk0p1 /mnt/boot
+	// nano /mnt/boot/uEnv.txt
+	// #add this to the end of the single line of uEnv.txt:
+	// capemgr.enable_partno=BB-UART1
+
+	// Open the serial port
+	fd = open("/dev/ttyO1",(O_RDWR | O_NOCTTY | O_NDELAY));
+
+	if (fd == -1)
+	{
+			perror("open_port: Unable to open /dev/ttyO1 = ");
+	} else {
+			fcntl(fd, F_SETFL,0); // Used with O_NODELAY, supposed to set read to blocking, doesn't
+			printf("Port 1 has been successfully opened and %d is the file description\n", fd);
+	}
+
+}
+
+BBBSerial::~BBBSerial()
+{
+	// Close the file descriptor
+	close(fd);
+}
+
+void BBBSerial::readByte(uint8_t &rd)
+{
+	rd = read(fd,buff,1);
+}
+
+void BBBSerial::writeByte(uint8_t wt)
+{
+	write(fd,&wt,1);
+}
+
+void BBBSerial::writeData(std::vector<double> state)
+{
+
+	uint8_t chk=0; // checksum
+
+	union {				// message payload element as float and bytes
+		uint8_t b[4];
+		float f;
+	} pld;
+
+	// make sure a float is 4 bytes on the target machine
+	assert(sizeof(float) == 4);
+
+	// check for a request
+	BBBSerial::readByte(*rd);
+
+	// send header message (checksum has already been included in the header)
+	for (int i=0; i<sizeof(hdr); i++)
+	{
+		BBBSerial::writeByte(hdr[i]);
+	}
+
+	// send the payload length = 6
+	BBBSerial::writeByte(payload_len);
+	chk ^= payload_len;
+
+	//send the payload
+	for (int i=0; i<24; i++)
+	{
+		pld.f = (float) state[i];  		// Typecast state to a 4-byte float
+		BBBSerial::writeByte(pld.b[0]);	// Write each of the four bytes representing the float
+		BBBSerial::writeByte(pld.b[1]);
+		BBBSerial::writeByte(pld.b[2]);
+		BBBSerial::writeByte(pld.b[3]);
+
+		// update checksum
+		chk ^= pld.b[0] ^ pld.b[1] ^ pld.b[2] ^ pld.b[3];
+	}
+
+	// send the checksum
+	BBBSerial::writeByte(chk);
+}

@@ -16,7 +16,7 @@ Threshold::Threshold() {
 
 
 // Constructor with image specified
-Threshold::Threshold(cv::Mat src) {
+Threshold::Threshold(cv::Mat &src) {
 	Threshold();    //FORLINUX
 	Threshold::set_image(src);
 }
@@ -24,14 +24,14 @@ Threshold::Threshold(cv::Mat src) {
 
 
 // set a source image
-void Threshold::set_image(cv::Mat src) {
+void Threshold::set_image(cv::Mat &src) {
 	img = src;
 }
 
 
 
 // set blob parameters
-void Threshold::set_params(CustomBlobDetector::Params paramObj) {
+void Threshold::set_params(CustomBlobDetector::Params &paramObj) {
 	blobParams = paramObj;
 }
 
@@ -41,7 +41,9 @@ void Threshold::set_params(CustomBlobDetector::Params paramObj) {
 void Threshold::detect_blobs() {
 
 	// set up and create the detector using the parameters
-	cv::Ptr<cv::FeatureDetector> blob_detector = new CustomBlobDetector(blobParams);
+	static CustomBlobDetector blob_detector_obj(blobParams);
+	cv::Ptr<cv::FeatureDetector> blob_detector = &blob_detector_obj;
+
 	blob_detector->create("CustomBlob");
 
 

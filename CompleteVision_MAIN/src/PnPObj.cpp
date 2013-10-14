@@ -166,12 +166,17 @@ bool PnPObj::setCamProps(const std::string filename) {
 	fs["Camera_Matrix"] >> cameraMatrix;
 	fs["Distortion_Coefficients"] >> distCoeffs;
 
-#if DEBUG_MODE
+#ifdef DEBUG_STDOUT
 	// write to standard output
 	std::cout << "\nCamera properties read from:\n" << filename << std::endl;
 	std::cout << "\ncameraMatrix:\n" << cameraMatrix << std::endl;
 	std::cout << "\ndistCoeffs:\n" << distCoeffs << std::endl;
 #endif /* DEBUG_MODE */
+
+	if (cameraMatrix.empty())
+		std::cerr << "Camera Matrix is empty!" << std::endl;
+	else if (distCoeffs.empty())
+		std::cerr << "Distortion Coefficients are empty" << std::endl;
 
 	fs.release();
 	return 1;
@@ -184,6 +189,7 @@ void PnPObj::setImagePoints(std::vector<cv::Point2f>::iterator im_start,
 		std::vector<cv::Point2f>::iterator im_end) {
 
 	imagePoints.assign(im_start,im_end);
+
 }
 
 
@@ -265,7 +271,7 @@ bool PnPObj::setModelPoints(const char* pointsFilename) {
 	}
 	pointsFile.close();
 
-#if DEBUG_MODE
+#ifdef DEBUG_STDOUT
 	std::cout << "\nModel points read from:\n" << pointsFilename << std::endl;
 	std::cout << "\nmodelPoints:\n" << modelPoints << std::endl;
 #endif /* DEBUG_MODE */
@@ -441,8 +447,8 @@ std::vector<double> PnPObj::getState() {
 
 
 // draw over frame
-void PnPObj::drawOverFrame(cv::Mat src, cv::Mat &out) {
-	char pointLabel[1];
+void PnPObj::drawOverFrame(cv::Mat &src) {
+	char pointLabel[5];
 	cv::Point2f pointLabelLoc;
 	char stateText1[100], stateText2[100], errText[100];
 
@@ -451,8 +457,9 @@ void PnPObj::drawOverFrame(cv::Mat src, cv::Mat &out) {
 			cv::circle(src,imagePoints[i], 5, cv::Scalar(0,0,255), -1);
 			sprintf(pointLabel,"%d",i+1);
 			pointLabelLoc = imagePoints[i] - cv::Point2f(8,8);
-			putText(out, pointLabel, pointLabelLoc, cv::FONT_HERSHEY_PLAIN,
+			putText(src, pointLabel, pointLabelLoc, cv::FONT_HERSHEY_PLAIN,
 					1.5, cv::Scalar(255,255,255), 1);
+
 
 			cv::circle(src,projImagePoints[i], 3, cv::Scalar(0,255,255), 3);
 			cv::line(src,projAxesPoints[0], projAxesPoints[1], cv::Scalar(0,0,255), 2);
@@ -463,6 +470,7 @@ void PnPObj::drawOverFrame(cv::Mat src, cv::Mat &out) {
 					B_tvec.at<double>(0,0)*MM2IN,
 					B_tvec.at<double>(1,0)*MM2IN,
 					B_tvec.at<double>(2,0)*MM2IN);
+
 			sprintf(stateText2,"phi: %8.2f  theta: %8.2f  psi: %8.2f",phi*RAD2DEG,theta*RAD2DEG,psi*RAD2DEG);
 			sprintf(errText,"Reproj. Err: %10.6f", scaledReprojErr);
 		}
@@ -479,9 +487,9 @@ void PnPObj::drawOverFrame(cv::Mat src, cv::Mat &out) {
 	cv::Point2f textPt3(30,src.rows-60);
 
 	// TODO: Create a ROI with white space, add to image to make a washed out box, and put black text over it.
-	putText(out, stateText1, textPt1, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
-	putText(out, stateText2, textPt2, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
-	putText(out, errText, textPt3, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+	putText(src, stateText1, textPt1, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+	putText(src, stateText2, textPt2, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+	putText(src, errText, textPt3, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
 }
 
 

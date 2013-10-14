@@ -1,20 +1,23 @@
+/*
+ * TODO: Implement frame saving to uSD card
+ * TODO: Clean-up code as needed
+ *
+ */
+
+
 
 // SYSTEM INCLUDES
 #include <iostream>
 #include <iterator>
 
-
-
 // USER INCLUDES
 #include "Global.hpp"
+#include "Config.hpp"
 #include "CamObj.hpp"
 #include "FPSCounter.hpp"
 #include "Threshold.hpp"
 #include "PnPObj.hpp"
-
-#ifdef LINUX
-//#include "OCVCapture.h"
-#endif /*LINUX*/
+#include "BBBSerial.h"
 
 // #ifdef FOUNDBLOBS_TO_FILE
 #include<stdio.h>
@@ -29,27 +32,6 @@ FILE *pFile;
 #include <sys/stat.h>
 unsigned int frameCount = 0;
 unsigned int frameSkip = 30;
-
-
-
-// GLOBALS
-int devNo = 1;		// device number of camera
-
-const char blobFilename[] = "blobFile.txt";		// log file name for blob detection
-const char imageSavepath[] = "TestImages";		// directory to save debug frames in
-const char poseFilename[] = "poseFile.txt";		// log file name for pose estimates
-
-// path to intrinsic camera properties
-const std::string camDataFilename =
-		"/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration/Zoomed In/PS3Eye_out_camera_data.yml";
-// path to 3-D model geometry file
-const char* modelPointsFilename =
-		"/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration/Zoomed In/LEDPos copy2.txt";
-
-// const int NO_LEDS    // moved to Global.hpp
-const double POSE_ERR_TOL = 0.026;			// if reprojection error is lower than this --> move on
-const double SECONDARY_POSE_ERR_TOL = 0.055;	// otherwise, try re-ordering LED's and choose lowest
-// error that still satisfies the secondary error tolerance
 
 
 // HELPER FUNCTION DEFINITIONS
@@ -70,14 +52,17 @@ int main() {
 #else
 	std::cerr << "Unknown System!" << std::endl;
 #endif
+#if ARM
+	std::cout << "Detected Beaglebone" << std::endl;
+#endif
 
 
 	/////////////////////////////////////////////////////////////////////////////////
 	// Initialize camera, set parameters, and grab some "throwaway" frames
 	std::cout << "Initializing camera" << std::endl;
 
-	cv::Mat frame;
-	CamObj cap;
+	 static cv::Mat frame(cv::Size(640,480),CV_8UC3);
+	 static CamObj cap;
 #ifdef OSX
 	// have to open camera first if OSX
 	if(!cap.open(devNo)) return -1;
@@ -113,13 +98,13 @@ int main() {
 	//////////////////////////////////////////////////////////////////////////////////
 	// Initialize Threshold object
 
-	CustomBlobDetector::Params blobParams;
+	static CustomBlobDetector::Params blobParams;
 
 	// TODO:  Can look at trying to read these values in from xml/yml later
-	blobParams.maxPoints = 				10;
-	blobParams.maxError = 				0.30;
+	blobParams.maxPoints = 				8;
+	blobParams.maxError = 				1.8;
 	blobParams.minArea = 				1;
-	blobParams.maxArea = 				200;
+	blobParams.maxArea = 				350;
 	blobParams.minCircularity = 		0.05;
 	blobParams.maxCircularity = 		1.1;
 	blobParams.minInertiaRatio = 		0.05;
@@ -134,9 +119,9 @@ int main() {
 	blobParams.targetConvexity = 		1.0;
 	blobParams.targetBlobColor = 		255;
 
-	blobParams.w_Circularity = 			255;
+	blobParams.w_Circularity = 			200;
 	blobParams.w_InertiaRatio = 		0;
-	blobParams.w_Convexity = 			0;
+	blobParams.w_Convexity = 			100;
 	blobParams.w_BlobColor = 			255;
 
 	blobParams.filterByError = 			false;
@@ -147,7 +132,7 @@ int main() {
 	blobParams.filterByConvexity = 		true;
 
 	// create Threshold object
-	Threshold thresh;
+	static Threshold thresh;
 	thresh.set_params(blobParams);
 
 	std::cout << "blobParams set" << std::endl;
@@ -156,7 +141,7 @@ int main() {
 	// Setup PnP object and associated parameters
 	std::cout << "Reading intrinsic camera properties and 3-D model geometry" << std::endl;
 
-	PnPObj PnP;
+	static PnPObj PnP;
 	PnP.setCamProps(camDataFilename);
 	PnP.setModelPoints(modelPointsFilename);
 
@@ -166,7 +151,12 @@ int main() {
 	// Setup before main loop starts
 
 	// initialize fps clock
-	FPSCounter FPSclk(15);	// Use 15-frame moving average
+	 static FPSCounter FPSclk(15);	// Use 15-frame moving average
+
+	// initialize serial ports
+#if ARM
+	BBBSerial Serial;
+#endif
 
 #ifdef FOUNDBLOBS_TO_FILE
 	// begin blobFile and writeout header
@@ -201,7 +191,7 @@ int main() {
 		cap >> frame;
 
 		// peel off Red channel
-		cv::Mat R(frame.size(),CV_8UC1);
+		static cv::Mat R(frame.size(),CV_8UC1);
 		int mixch[] = {2,0};
 		cv::mixChannels(&frame,1,&R,1,mixch,1);
 
@@ -227,15 +217,20 @@ int main() {
 		double poseErr;
 
 		int poseIters = PnP.localizeUAV(imagePoints, poseState, poseErr, 6, POSE_ERR_TOL, SECONDARY_POSE_ERR_TOL);
+
 		if (poseIters > 0) {
 			PnP.is_current = true;  // set flag to know if this is an updated state or not
 		} else {
 			PnP.is_current = false;
-			poseIters = (int)NAN;
-			imagePoints.resize(5);
-			fill(imagePoints.begin(),imagePoints.end(),cv::Point((int)NAN,(int)NAN));
+			//poseIters = (int)NAN;
+			//imagePoints.resize(5);
+			//fill(imagePoints.begin(),imagePoints.end(),cv::Point((int)NAN,(int)NAN));
 		}
 
+#if ARM
+		// send pose estimate over serial
+		Serial.writeData(poseState);
+#endif
 
 #ifdef POSE_TO_FILE
 		// writeout pose estimate to logfile
@@ -282,11 +277,9 @@ int main() {
 
 
 		/* ====================== DEBUG INFO ====================== */
-
 #if defined(DEBUG_VIDEO) || defined(SAVEOFF_FRAMES)
 		// print blobs on image (green)
 		thresh.createBlobsImage(frame,cv::Scalar(0,255,0));
-
 
 		// print the 5 "most probable" blobs on image (blue)
 		if (imagePoints.size() > 0) {
@@ -295,7 +288,7 @@ int main() {
 			}
 		}
 
-		PnP.drawOverFrame(frame,frame);
+		PnP.drawOverFrame(frame);
 
 #endif /*DEBUG_VIDEO -or- SAVEOFF_FRAMES*/
 

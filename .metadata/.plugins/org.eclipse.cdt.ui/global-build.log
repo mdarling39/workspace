@@ -1,188 +1,121 @@
-21:56:54 **** Build of configuration Debug for project BItmaskTests ****
+13:00:15 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
-Building file: ../src/BItmaskTests.cpp
+Building file: ../src/CompleteVision_MAIN.cpp
 Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-21:56:58 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-make: Nothing to be done for `all'.
-21:57:00 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-make: Nothing to be done for `all'.
-21:57:10 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-21:59:55 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:00:02 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:00:33 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:00:40 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:00:48 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:01:02 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:01:13 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:01:27 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:01:39 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:06:10 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-22:09:00 **** Incremental Build of configuration Debug for project BItmaskTests ****
-make all 
-Building file: ../src/BItmaskTests.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/BItmaskTests.d" -MT"src/BItmaskTests.d" -o "src/BItmaskTests.o" "../src/BItmaskTests.cpp"
-Finished building: ../src/BItmaskTests.cpp
- 
-Building target: BItmaskTests
-Invoking: MacOS X C++ Linker
-g++  -o "BItmaskTests"  ./src/BItmaskTests.o   
-Finished building target: BItmaskTests
- 
-11:15:23 **** Build of configuration Debug for project CompleteVision_MAIN ****
-make all 
-make: Nothing to be done for `all'.
-11:17:06 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+../src/CompleteVision_MAIN.cpp:199:7: error: no matching member function for call to 'at'
+                                R.at<CV_8UC1>(i,j) = frame.at<CV_8UC3>(i,j)[2];
+                                ~~^~~~~~~~~~~
+/opt/local/include/opencv2/core/mat.hpp:533:41: note: candidate template ignored: invalid explicitly-specified argument for template parameter '_Tp'
+template<typename _Tp> inline _Tp& Mat::at(int i0, int i1)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:541:47: note: candidate template ignored: invalid explicitly-specified argument for template parameter '_Tp'
+template<typename _Tp> inline const _Tp& Mat::at(int i0, int i1) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:565:41: note: candidate function template not viable: allows at most single argument 'i0', but 2 arguments were provided
+template<typename _Tp> inline _Tp& Mat::at(int i0)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:578:47: note: candidate function template not viable: allows at most single argument 'i0', but 2 arguments were provided
+template<typename _Tp> inline const _Tp& Mat::at(int i0) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:591:41: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+template<typename _Tp> inline _Tp& Mat::at(int i0, int i1, int i2)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:596:47: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+template<typename _Tp> inline const _Tp& Mat::at(int i0, int i1, int i2) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:549:41: note: candidate function template not viable: requires single argument 'pt', but 2 arguments were provided
+template<typename _Tp> inline _Tp& Mat::at(Point pt)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:557:47: note: candidate function template not viable: requires single argument 'pt', but 2 arguments were provided
+template<typename _Tp> inline const _Tp& Mat::at(Point pt) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:601:41: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp> inline _Tp& Mat::at(const int* idx)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:606:47: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp> inline const _Tp& Mat::at(const int* idx) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:611:41: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp, int n> _Tp& Mat::at(const Vec<int, n>& idx)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:616:54: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp, int n> inline const _Tp& Mat::at(const Vec<int, n>& idx) const
+                                                     ^
+../src/CompleteVision_MAIN.cpp:199:32: error: no matching member function for call to 'at'
+                                R.at<CV_8UC1>(i,j) = frame.at<CV_8UC3>(i,j)[2];
+                                                     ~~~~~~^~~~~~~~~~~
+/opt/local/include/opencv2/core/mat.hpp:533:41: note: candidate template ignored: invalid explicitly-specified argument for template parameter '_Tp'
+template<typename _Tp> inline _Tp& Mat::at(int i0, int i1)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:541:47: note: candidate template ignored: invalid explicitly-specified argument for template parameter '_Tp'
+template<typename _Tp> inline const _Tp& Mat::at(int i0, int i1) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:565:41: note: candidate function template not viable: allows at most single argument 'i0', but 2 arguments were provided
+template<typename _Tp> inline _Tp& Mat::at(int i0)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:578:47: note: candidate function template not viable: allows at most single argument 'i0', but 2 arguments were provided
+template<typename _Tp> inline const _Tp& Mat::at(int i0) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:591:41: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+template<typename _Tp> inline _Tp& Mat::at(int i0, int i1, int i2)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:596:47: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+template<typename _Tp> inline const _Tp& Mat::at(int i0, int i1, int i2) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:549:41: note: candidate function template not viable: requires single argument 'pt', but 2 arguments were provided
+template<typename _Tp> inline _Tp& Mat::at(Point pt)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:557:47: note: candidate function template not viable: requires single argument 'pt', but 2 arguments were provided
+template<typename _Tp> inline const _Tp& Mat::at(Point pt) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:601:41: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp> inline _Tp& Mat::at(const int* idx)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:606:47: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp> inline const _Tp& Mat::at(const int* idx) const
+                                              ^
+/opt/local/include/opencv2/core/mat.hpp:611:41: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp, int n> _Tp& Mat::at(const Vec<int, n>& idx)
+                                        ^
+/opt/local/include/opencv2/core/mat.hpp:616:54: note: candidate function template not viable: requires single argument 'idx', but 2 arguments were provided
+template<typename _Tp, int n> inline const _Tp& Mat::at(const Vec<int, n>& idx) const
+                                                     ^
+2 errors generated.
+make: *** [src/CompleteVision_MAIN.o] Error 1
+10:35:13 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
 Building file: ../src/CompleteVision_MAIN.cpp
 Invoking: GCC C++ Compiler
 g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
 Finished building: ../src/CompleteVision_MAIN.cpp
  
-Building file: ../src/FPSCounter.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FPSCounter.d" -MT"src/FPSCounter.d" -o "src/FPSCounter.o" "../src/FPSCounter.cpp"
-Finished building: ../src/FPSCounter.cpp
- 
-Building file: ../src/KalmanFilter.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/KalmanFilter.d" -MT"src/KalmanFilter.d" -o "src/KalmanFilter.o" "../src/KalmanFilter.cpp"
-Finished building: ../src/KalmanFilter.cpp
- 
 Building file: ../src/PnPObj.cpp
 Invoking: GCC C++ Compiler
 g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PnPObj.d" -MT"src/PnPObj.d" -o "src/PnPObj.o" "../src/PnPObj.cpp"
+../src/PnPObj.cpp:490:84: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, stateText1, textPt1, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                           ^~~
+../src/PnPObj.cpp:491:84: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, stateText2, textPt2, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                           ^~~
+../src/PnPObj.cpp:492:81: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, errText, textPt3, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                        ^~~
+../src/PnPObj.cpp:639:16: warning: variable 'point5' is used uninitialized whenever 'for' loop exits because its condition is false [-Wsometimes-uninitialized]
+        for (int i=0; i<NO_LEDS; i++) {
+                      ^~~~~~~~~
+../src/PnPObj.cpp:647:40: note: uninitialized use occurs here
+        newImagePoints[2] = bufferImagePoints[point5];
+                                              ^~~~~~
+../src/PnPObj.cpp:639:16: note: remove the condition if it is always true
+        for (int i=0; i<NO_LEDS; i++) {
+                      ^~~~~~~~~
+../src/PnPObj.cpp:638:12: note: initialize the variable 'point5' to silence this warning
+        int point5;
+                  ^
+                   = 0
+4 warnings generated.
 Finished building: ../src/PnPObj.cpp
  
 Building file: ../src/Threshold.cpp
@@ -190,133 +123,137 @@ Invoking: GCC C++ Compiler
 g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
 Finished building: ../src/Threshold.cpp
  
-Building file: ../src/customblobdetector.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/customblobdetector.d" -MT"src/customblobdetector.d" -o "src/customblobdetector.o" "../src/customblobdetector.cpp"
-Finished building: ../src/customblobdetector.cpp
- 
 Building target: CompleteVision_MAIN
 Invoking: MacOS X C++ Linker
 g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
 Finished building target: CompleteVision_MAIN
  
-11:17:29 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+10:35:42 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
 make: Nothing to be done for `all'.
-11:17:32 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+10:36:31 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
-make: Nothing to be done for `all'.
-11:17:46 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
-make all 
-make: Nothing to be done for `all'.
-11:17:53 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
-make all 
-make: Nothing to be done for `all'.
-11:17:55 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
-make all 
-make: Nothing to be done for `all'.
-11:27:02 **** Clean-only build of configuration Debug for project CompleteVision_MAIN ****
-make clean 
-rm -rf  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o  ./src/CamObj.d ./src/CompleteVision_MAIN.d ./src/FPSCounter.d ./src/KalmanFilter.d ./src/PnPObj.d ./src/Threshold.d ./src/customblobdetector.d  CompleteVision_MAIN
- 
-11:27:22 **** Build of configuration Debug for project CompleteVision_MAIN ****
-make all 
-Building file: ../src/CamObj.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CamObj.d" -MT"src/CamObj.d" -o "src/CamObj.o" "../src/CamObj.cpp"
-Finished building: ../src/CamObj.cpp
- 
 Building file: ../src/CompleteVision_MAIN.cpp
 Invoking: GCC C++ Compiler
 g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
 Finished building: ../src/CompleteVision_MAIN.cpp
  
-Building file: ../src/FPSCounter.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FPSCounter.d" -MT"src/FPSCounter.d" -o "src/FPSCounter.o" "../src/FPSCounter.cpp"
-Finished building: ../src/FPSCounter.cpp
+Building target: CompleteVision_MAIN
+Invoking: MacOS X C++ Linker
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
  
-Building file: ../src/KalmanFilter.cpp
+10:38:05 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+make all 
+Building file: ../src/CompleteVision_MAIN.cpp
 Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/KalmanFilter.d" -MT"src/KalmanFilter.d" -o "src/KalmanFilter.o" "../src/KalmanFilter.cpp"
-Finished building: ../src/KalmanFilter.cpp
- 
-Building file: ../src/PnPObj.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PnPObj.d" -MT"src/PnPObj.d" -o "src/PnPObj.o" "../src/PnPObj.cpp"
-Finished building: ../src/PnPObj.cpp
- 
-Building file: ../src/Threshold.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
-Finished building: ../src/Threshold.cpp
- 
-Building file: ../src/customblobdetector.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/customblobdetector.d" -MT"src/customblobdetector.d" -o "src/customblobdetector.o" "../src/customblobdetector.cpp"
-Finished building: ../src/customblobdetector.cpp
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
  
 Building target: CompleteVision_MAIN
 Invoking: MacOS X C++ Linker
 g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
 Finished building target: CompleteVision_MAIN
  
-11:27:42 **** Build of configuration Debug for project LEDDetectorTest ****
+10:39:06 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
-Building file: ../src/KalmanFilter.cpp
+Building file: ../src/CompleteVision_MAIN.cpp
 Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/KalmanFilter.d" -MT"src/KalmanFilter.d" -o "src/KalmanFilter.o" "../src/KalmanFilter.cpp"
-Finished building: ../src/KalmanFilter.cpp
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
  
-Building file: ../src/LEDDetectorTest.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/LEDDetectorTest.d" -MT"src/LEDDetectorTest.d" -o "src/LEDDetectorTest.o" "../src/LEDDetectorTest.cpp"
-Finished building: ../src/LEDDetectorTest.cpp
- 
-Building file: ../src/Threshold.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
-Finished building: ../src/Threshold.cpp
- 
-Building file: ../src/customblobdetector.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/customblobdetector.d" -MT"src/customblobdetector.d" -o "src/customblobdetector.o" "../src/customblobdetector.cpp"
-Finished building: ../src/customblobdetector.cpp
- 
-Building target: LEDDetectorTest
+Building target: CompleteVision_MAIN
 Invoking: MacOS X C++ Linker
-g++ -m32 -L/opt/local/lib -o "LEDDetectorTest"  ./src/FPSCounter.o ./src/KalmanFilter.o ./src/LEDDetectorTest.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_video -lopencv_highgui -lopencv_features2d -lopencv_objdetect -lopencv_imgproc
-Finished building target: LEDDetectorTest
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
  
-11:27:55 **** Build of configuration Debug for project SimplePnP ****
+10:56:24 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
-Building file: ../src/SimplePnP.cpp
+Building file: ../src/CompleteVision_MAIN.cpp
 Invoking: GCC C++ Compiler
-g++ -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SimplePnP.d" -MT"src/SimplePnP.d" -o "src/SimplePnP.o" "../src/SimplePnP.cpp"
-Finished building: ../src/SimplePnP.cpp
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
  
-Building target: SimplePnP
+Building target: CompleteVision_MAIN
 Invoking: MacOS X C++ Linker
-g++ -L/opt/local/lib -o "SimplePnP"  ./src/SimplePnP.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d
-Finished building target: SimplePnP
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
  
-11:27:59 **** Build of configuration Debug for project Threshold ****
+11:02:29 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
-Building file: ../src/Threshold.cpp
+make: Nothing to be done for `all'.
+11:17:35 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+make all 
+Building file: ../src/CompleteVision_MAIN.cpp
 Invoking: GCC C++ Compiler
-g++ -I/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include -I/Library/Frameworks -I/opt/local/include -I/System/Library/Frameworks -I/usr/include -I/usr/include/c++/4.2.1 -I/usr/include/c++/4.2.1/backward -I/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include -I/usr/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
-Finished building: ../src/Threshold.cpp
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
  
-Building target: Threshold
+Building target: CompleteVision_MAIN
 Invoking: MacOS X C++ Linker
-g++ -L/opt/local/lib -o "Threshold"  ./src/Threshold.o   -lopencv_core -lopencv_objdetect -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d
-Finished building target: Threshold
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
  
-11:28:04 **** Build of configuration Debug for project VisionSystem ****
+11:21:24 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
+Building file: ../src/CompleteVision_MAIN.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
+ 
+Building target: CompleteVision_MAIN
+Invoking: MacOS X C++ Linker
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
+ 
+11:26:02 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+make all 
+make: Nothing to be done for `all'.
+11:31:19 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+make all 
+Building file: ../src/CompleteVision_MAIN.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
+ 
+Building target: CompleteVision_MAIN
+Invoking: MacOS X C++ Linker
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
+ 
+11:46:10 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+make all 
+Building file: ../src/CompleteVision_MAIN.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
+ 
 Building file: ../src/PnPObj.cpp
 Invoking: GCC C++ Compiler
 g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PnPObj.d" -MT"src/PnPObj.d" -o "src/PnPObj.o" "../src/PnPObj.cpp"
+../src/PnPObj.cpp:490:84: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, stateText1, textPt1, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                           ^~~
+../src/PnPObj.cpp:491:84: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, stateText2, textPt2, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                           ^~~
+../src/PnPObj.cpp:492:81: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, errText, textPt3, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                        ^~~
+../src/PnPObj.cpp:639:16: warning: variable 'point5' is used uninitialized whenever 'for' loop exits because its condition is false [-Wsometimes-uninitialized]
+        for (int i=0; i<NO_LEDS; i++) {
+                      ^~~~~~~~~
+../src/PnPObj.cpp:647:40: note: uninitialized use occurs here
+        newImagePoints[2] = bufferImagePoints[point5];
+                                              ^~~~~~
+../src/PnPObj.cpp:639:16: note: remove the condition if it is always true
+        for (int i=0; i<NO_LEDS; i++) {
+                      ^~~~~~~~~
+../src/PnPObj.cpp:638:12: note: initialize the variable 'point5' to silence this warning
+        int point5;
+                  ^
+                   = 0
+4 warnings generated.
 Finished building: ../src/PnPObj.cpp
  
 Building file: ../src/Threshold.cpp
@@ -324,21 +261,20 @@ Invoking: GCC C++ Compiler
 g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
 Finished building: ../src/Threshold.cpp
  
-Building file: ../src/VisionSystem.cpp
-Invoking: GCC C++ Compiler
-g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/VisionSystem.d" -MT"src/VisionSystem.d" -o "src/VisionSystem.o" "../src/VisionSystem.cpp"
-../src/VisionSystem.cpp: In function 'int main()':
-../src/VisionSystem.cpp:129: warning: unused variable 'fpsMAVG'
-Finished building: ../src/VisionSystem.cpp
- 
-Building target: VisionSystem
+Building target: CompleteVision_MAIN
 Invoking: MacOS X C++ Linker
-g++ -m32 -L/opt/local/lib -o "VisionSystem"  ./src/FPSCounter.o ./src/PnPObj.o ./src/Threshold.o ./src/VisionSystem.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
-Finished building target: VisionSystem
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
  
-11:29:43 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+11:51:52 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
 make all 
-make: Nothing to be done for `all'.
-11:32:11 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
-make all 
-make: Nothing to be done for `all'.
+Building file: ../src/CompleteVision_MAIN.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
+ 
+Building target: CompleteVision_MAIN
+Invoking: MacOS X C++ Linker
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
+ 

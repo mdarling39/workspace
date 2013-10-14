@@ -42,13 +42,13 @@ public:
 
 	// default constructor
 	Threshold();
-	Threshold(cv::Mat src);
+	Threshold(cv::Mat &src);
 
 	// set a source image
-	void set_image(cv::Mat src);
+	void set_image(cv::Mat &src);
 
 	// set blob parameters
-	void set_params(CustomBlobDetector::Params paramObj);
+	void set_params(CustomBlobDetector::Params &paramObj);
 
 	// detect blobs
 	void detect_blobs();

@@ -1,0 +1,68 @@
+/*
+ * Global.hpp
+ *
+ *  Created on: May 21, 2013
+ *      Author: michaeldarling
+ */
+
+#ifndef GLOBAL_HPP_
+#define GLOBAL_HPP_
+
+// Detect System
+#ifdef __APPLE__
+#define OSX 1
+#endif /*__APPLE__*/
+
+#ifdef __linux__
+#define LINUX 1
+#endif /*__linux__*/
+
+#ifdef __arm__
+#define ARM 1
+#endif /*__arm__*/
+
+
+// Modes
+#define DEBUG_STDOUT			// write debug info to stdout
+//#define DEBUG_VIDEO				// display video debug data
+//#define FOUNDBLOBS_TO_FILE	// write blob coordinates to file
+//#define SAVEOFF_FRAMES		// save off frames to memory
+//#define POSE_TO_FILE			// write pose estimates to file
+//#define DO_KALMAN_FILTER		// implement kalman filter for object tracking TODO:  Not using Kalman fitler, remove from the code
+
+// GLOBALS
+int devNo = 0;		// device number of camera
+
+const char blobFilename[] = "blobFile.txt";		// log file name for blob detection
+const char imageSavepath[] = "TestImages";		// directory to save debug frames in
+const char poseFilename[] = "poseFile.txt";		// log file name for pose estimates
+
+// path to intrinsic camera properties
+const std::string camDataFilename =
+		"/Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration_NEW/CalibrationResults/C920-640x480/C920-640x480_IntrinsicParams.yml";
+
+// path to 3-D model geometry file
+const char* modelPointsFilename =
+		"Users/michaeldarling/Dropbox/Thesis/OpenCV/Calibration_NEW/CalibrationResults/Model Points/Glider.txt";
+
+const double POSE_ERR_TOL = 0.026;				// if reprojection error is lower than this --> move on
+const double SECONDARY_POSE_ERR_TOL = 0.055;	// otherwise, try re-ordering LED's and choose lowest
+												// error that still satisfies the secondary error tolerance
+
+
+
+
+// Conversions
+const double IN2MM = 25.4;
+const double MM2IN = 1/IN2MM;
+const double PI = 3.14159265359;
+const double RAD2DEG = 180/PI;
+const int DEG2RAD = PI/180;
+
+
+// Settings
+const double AXES_LN = 10*IN2MM;	// TODO:	Move AXES_LN into a private member of the PnP class  & provide setter/getter
+const int NO_LEDS = 5;		// TODO:	Move NO_LEDS into a private member of the PnP class & provide setter/getter
+
+
+#endif /* GLOBAL_HPP_ */

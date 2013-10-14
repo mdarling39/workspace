@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="263" key="DIALOG_WIDTH"/>
 		<item value="351" key="DIALOG_Y_ORIGIN"/>
-		<item value="883" key="DIALOG_X_ORIGIN"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
+		<item value="883" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="swapImage" key="selection"/>
+		<item value="solve()" key="selection"/>
 		<list key="findhistory">
-			<item value="swapImage"/>
-			<item value="drawOverFrame"/>
-			<item value="pFile"/>
-			<item value="is_current"/>
-			<item value="poseIters"/>
-			<item value="cout"/>
-			<item value="swap"/>
-			<item value="correlate"/>
+			<item value="solve()"/>
+			<item value="devNo"/>
+			<item value="Could not open points file"/>
+			<item value="could not open points file"/>
+			<item value="open_"/>
+			<item value="Could not"/>
+			<item value="open"/>
+			<item value="poseState"/>
 		</list>
 		<list key="replacehistory">
 			<item value="bFile"/>

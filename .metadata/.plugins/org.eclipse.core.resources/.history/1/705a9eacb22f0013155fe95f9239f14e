@@ -1,0 +1,32 @@
+/*
+ * BBBSerial.h
+ *
+ *  Created on: Oct 7, 2013
+ *      Author: michaeldarling
+ */
+
+#ifndef BBBSERIAL_H_
+#define BBBSERIAL_H_
+
+#include <stdio.h>
+#include <string.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <termios.h>
+#include <unistd.h>
+
+class BBBSerial{
+private:
+	int fd;				//file handle
+	char buff[20]; 		// read buffer
+	volatile int rd,wr; // read character count and write character count
+
+public:
+	bool readByte(uint8_t);
+	bool writeByte(uint8_t);
+	bool writeData(std::vector);
+
+};
+
+
+#endif /* BBBSERIAL_H_ */

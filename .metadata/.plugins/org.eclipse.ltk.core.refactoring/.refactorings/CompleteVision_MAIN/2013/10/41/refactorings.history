@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CompleteVision_MAIN/src/Config.h&apos; to &apos;Config.hpp&apos;" description="Rename resource &apos;Config.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Config.h" name="Config.hpp" stamp="1381526886829" updateReferences="true"/>
+</session>

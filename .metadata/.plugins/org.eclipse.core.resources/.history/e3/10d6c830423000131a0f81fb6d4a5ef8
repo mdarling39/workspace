@@ -1,0 +1,27 @@
+/*
+ * BBBSerial.cpp
+ *
+ *  Created on: Oct 7, 2013
+ *      Author: michaeldarling
+ */
+
+#include "BBBSerial.hpp"
+
+BBBSerial::BBBSerial(){
+
+}
+
+bool BBBSerial::readByte(uint3_t &rd)
+{
+
+}
+
+bool BBBSerial::writeByte(uint3_t wt)
+{
+
+}
+
+bool BBBSerial::writeData(std::vector<double> data)
+{
+
+}
