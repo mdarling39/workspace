@@ -278,3 +278,71 @@ Invoking: MacOS X C++ Linker
 g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
 Finished building target: CompleteVision_MAIN
  
+12:12:26 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+make all 
+Building file: ../src/CamObj.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CamObj.d" -MT"src/CamObj.d" -o "src/CamObj.o" "../src/CamObj.cpp"
+Finished building: ../src/CamObj.cpp
+ 
+Building file: ../src/CompleteVision_MAIN.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CompleteVision_MAIN.d" -MT"src/CompleteVision_MAIN.d" -o "src/CompleteVision_MAIN.o" "../src/CompleteVision_MAIN.cpp"
+Finished building: ../src/CompleteVision_MAIN.cpp
+ 
+Building file: ../src/FPSCounter.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FPSCounter.d" -MT"src/FPSCounter.d" -o "src/FPSCounter.o" "../src/FPSCounter.cpp"
+Finished building: ../src/FPSCounter.cpp
+ 
+Building file: ../src/KalmanFilter.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/KalmanFilter.d" -MT"src/KalmanFilter.d" -o "src/KalmanFilter.o" "../src/KalmanFilter.cpp"
+Finished building: ../src/KalmanFilter.cpp
+ 
+Building file: ../src/PnPObj.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PnPObj.d" -MT"src/PnPObj.d" -o "src/PnPObj.o" "../src/PnPObj.cpp"
+../src/PnPObj.cpp:490:84: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, stateText1, textPt1, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                           ^~~
+../src/PnPObj.cpp:491:84: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, stateText2, textPt2, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                           ^~~
+../src/PnPObj.cpp:492:81: warning: implicit conversion from 'double' to 'int' changes value from 1.2 to 1 [-Wliteral-conversion]
+        putText(src, errText, textPt3, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0,0,255), 1.2);
+        ~~~~~~~                                                                        ^~~
+../src/PnPObj.cpp:639:16: warning: variable 'point5' is used uninitialized whenever 'for' loop exits because its condition is false [-Wsometimes-uninitialized]
+        for (int i=0; i<NO_LEDS; i++) {
+                      ^~~~~~~~~
+../src/PnPObj.cpp:647:40: note: uninitialized use occurs here
+        newImagePoints[2] = bufferImagePoints[point5];
+                                              ^~~~~~
+../src/PnPObj.cpp:639:16: note: remove the condition if it is always true
+        for (int i=0; i<NO_LEDS; i++) {
+                      ^~~~~~~~~
+../src/PnPObj.cpp:638:12: note: initialize the variable 'point5' to silence this warning
+        int point5;
+                  ^
+                   = 0
+4 warnings generated.
+Finished building: ../src/PnPObj.cpp
+ 
+Building file: ../src/Threshold.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Threshold.d" -MT"src/Threshold.d" -o "src/Threshold.o" "../src/Threshold.cpp"
+Finished building: ../src/Threshold.cpp
+ 
+Building file: ../src/customblobdetector.cpp
+Invoking: GCC C++ Compiler
+g++ -m32 -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/customblobdetector.d" -MT"src/customblobdetector.d" -o "src/customblobdetector.o" "../src/customblobdetector.cpp"
+Finished building: ../src/customblobdetector.cpp
+ 
+Building target: CompleteVision_MAIN
+Invoking: MacOS X C++ Linker
+g++ -m32 -L/opt/local/lib -o "CompleteVision_MAIN"  ./src/CamObj.o ./src/CompleteVision_MAIN.o ./src/FPSCounter.o ./src/KalmanFilter.o ./src/PnPObj.o ./src/Threshold.o ./src/customblobdetector.o   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_features2d -lopencv_calib3d -lopencv_objdetect
+Finished building target: CompleteVision_MAIN
+ 
+12:13:47 **** Incremental Build of configuration Debug for project CompleteVision_MAIN ****
+make all 
+make: Nothing to be done for `all'.
